@@ -1,45 +1,5 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #121212;
-  color: white;
-  text-align: center;
-  margin: 0;
-  padding: 20px;
-}
-
-.container {
-  max-width: 500px;
-  margin: auto;
-  padding: 20px;
-}
-
-input {
-  width: 80%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  background: #1db954;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #14833b;
-}
-
-#player {
-  display: none; /* hide video */
-}
-
-#cover img {
-  margin-top: 20px;
-  width: 100%;
-  border-radius: 10px;
-}
+body { font-family: Arial; background: #111; color: #eee; text-align: center; }
+h1 { color: #1db954; }
+#library { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.song { border: 1px solid #444; padding: 10px; margin: 10px; width: 200px; }
+.song img { width: 100%; border-radius: 8px; }
