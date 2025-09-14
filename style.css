@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #121212;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #1db954;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #14833b;
+}
+
+#player {
+  display: none; /* hide video */
+}
+
+#cover img {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 10px;
+}
