@@ -1,35 +1,37 @@
-let player;
+const API = "https://DariusVrn.pythonanywhere.com";
 
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    height: '0',
-    width: '0',
-    videoId: '',
-    playerVars: {
-      autoplay: 0,
-      controls: 0
-    }
+async function loadSongs() {
+  let res = await fetch(`${API}/songs`);
+  let songs = await res.json();
+  let lib = document.getElementById("library");
+  lib.innerHTML = "";
+  songs.forEach(song => {
+    let div = document.createElement("div");
+    div.className = "song";
+    div.innerHTML = `
+      <img src="${song.thumbnail}">
+      <p>${song.title}</p>
+      <button onclick="playSong('${song.file}', \`${song.lyrics}\`)">Play</button>
+    `;
+    lib.appendChild(div);
   });
 }
 
-function playMusic() {
-  let url = document.getElementById("youtubeLink").value;
-  let videoId = extractVideoID(url);
-
-  if (videoId) {
-    // Load the video
-    player.loadVideoById(videoId);
-
-    // Show the thumbnail as cover
-    let coverDiv = document.getElementById("cover");
-    coverDiv.innerHTML = `<img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="cover">`;
-  } else {
-    alert("Invalid YouTube link!");
-  }
+function playSong(file, lyrics) {
+  document.getElementById("player").src = `${API}/songs/${file}`;
+  document.getElementById("lyrics").textContent = lyrics;
 }
 
-function extractVideoID(url) {
-  const regex = /(?:https?:\/\/)?(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([a-zA-Z0-9_-]{11})/;
-  let match = url.match(regex);
-  return match ? match[1] : null;
-}
+document.getElementById("addForm").onsubmit = async e => {
+  e.preventDefault();
+  let url = document.getElementById("ytUrl").value;
+  await fetch(`${API}/add_song`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url })
+  });
+  document.getElementById("ytUrl").value = "";
+  loadSongs();
+};
+
+loadSongs();
