@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SounDCloud</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎵 SounDCloud</h1>
+    <p>Paste a YouTube link below to play audio only:</p>
+    <input type="text" id="youtubeLink" placeholder="Paste YouTube link here">
+    <button onclick="playMusic()">Play</button>
+
+    <div id="player"></div>
+    <div id="cover"></div>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="script.js"></script>
+</body>
+</html>
